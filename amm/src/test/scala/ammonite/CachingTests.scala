@@ -116,7 +116,7 @@ object CachingTests extends TestSuite{
       val interp = createTestInterp(storage)
       interp.interpApi.load.module(scriptPath/"TagBase.sc")
       interp.interpApi.load.module(scriptPath/"TagPrevCommand.sc")
-      interp.interpApi.load.ivy("com.lihaoyi" %% "scalatags" % "0.4.5")
+      interp.interpApi.load.ivy("com.lihaoyi" %% "scalatags" % "0.6.2")
       interp.interpApi.load.module(scriptPath/"TagBase.sc")
       val n = storage.compileCache.size
       assert(n == 5) // customLolz predef + two blocks for each loaded file
@@ -133,7 +133,7 @@ object CachingTests extends TestSuite{
         val x = 1337
         @
         val y = x
-        import $ivy.`com.lihaoyi::scalatags:0.5.4`, scalatags.Text.all._
+        import $ivy.`com.lihaoyi::scalatags:0.6.2`, scalatags.Text.all._
         """)
       val scriptFile = tmp("""div("<('.'<)", y).render""")
 
@@ -155,7 +155,7 @@ object CachingTests extends TestSuite{
       write(
         predefFile,
         """
-        import $ivy.`com.lihaoyi::scalatags:0.5.4`; import scalatags.Text.all._
+        import $ivy.`com.lihaoyi::scalatags:0.6.2`; import scalatags.Text.all._
         val y = 31337
         """
       )
